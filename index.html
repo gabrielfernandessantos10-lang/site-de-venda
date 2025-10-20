@@ -1,45 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bike Store - As Melhores Bicicletas</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Loja de Bikes</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <h1>Bike Store</h1>
-        <nav>
-            <a href="#home">Início</a>
-            <a href="#produtos">Produtos</a>
-            <a href="#contato">Contato</a>
-        </nav>
+        <h1>Bike Shop Online</h1>
     </header>
 
-    <main id="home">
-        <section class="hero">
-            <h2>Encontre a Bicicleta dos Seus Sonhos</h2>
-            <p>Qualidade, performance e o melhor preço do mercado.</p>
+    <main>
+        <section class="produtos">
+            <h2>Nossas Bikes</h2>
+            
+            <div class="produto" id="bike-vikingx">
+                <img src="https://placehold.co/300x200/E8A900/white?text=VikingX+Tuff" alt="Bicicleta VikingX Tuff">
+                <h3>Bicicleta VikingX Tuff 25</h3>
+                <p>Ideal para Freeride, com câmbios **Shimano** de 21v.</p>
+                <p class="preco">R$ 1.899,00</p>
+                <button class="add-carrinho" data-nome="Bicicleta VikingX Tuff" data-preco="1899.00">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="produto" id="bike-gios">
+                <img src="https://placehold.co/300x200/007BFF/white?text=Gios+FRX" alt="Bicicleta Gios FRX">
+                <h3>Bicicleta Gios FRX</h3>
+                <p>Perfeita para manobras (grau), com freios a disco **Shimano**.</p>
+                <p class="preco">R$ 2.799,00</p>
+                <button class="add-carrinho" data-nome="Bicicleta Gios FRX" data-preco="2799.00">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="produto" id="bike-kona">
+                <img src="https://placehold.co/300x200/333333/white?text=Kona+Lava+Dome" alt="Bicicleta Kona Lava Dome">
+                <h3>Bicicleta Kona Lava Dome</h3>
+                <p>Uma Mountain Bike de alta performance para trilhas sérias.</p>
+                <p class="preco">R$ 3.699,00</p>
+                <button class="add-carrinho" data-nome="Bicicleta Kona Lava Dome" data-preco="3699.00">Adicionar ao Carrinho</button>
+            </div>
         </section>
 
-        <section id="produtos" class="product-grid">
-            <h2>Nossos Produtos</h2>
-            </section>
-
-        <section id="carrinho" class="cart">
-            <h2>Seu Carrinho</h2>
-            <div id="cart-items">
-                <p>Seu carrinho está vazio.</p>
-            </div>
-            <h3>Total: R$ <span id="cart-total">0.00</span></h3>
-            <button id="checkout-button">Finalizar Compra</button>
+        <section class="carrinho">
+            <h2>Carrinho</h2>
+            <ul id="lista-carrinho">
+                <li class="empty-cart">Seu carrinho está vazio.</li>
+            </ul>
+            <p>Total: <span id="total-carrinho">R$ 0,00</span></p>
+            <button id="finalizar-compra">Finalizar Compra</button>
         </section>
     </main>
-
-    <footer id="contato">
-        <p>&copy; 2025 Bike Store. Todos os direitos reservados.</p>
-        <p>Contato: contato@bikestore.com | (XX) XXXX-XXXX</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>
