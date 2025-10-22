@@ -3,54 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja de Bikes</title>
-    <link rel="stylesheet" href="style.css">
+    <title>BikeShop - Sua Loja de Bikes</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <header>
-        <h1>Bike Shop Online</h1>
+        <h1>BikeShop</h1>
     </header>
 
     <main>
-        <section class="produtos">
-            <h2>Nossas Bikes</h2>
-            
-            <div class="produto" id="bike-vikingx">
-                <img src="https://placehold.co/300x200/E8A900/white?text=VikingX+Tuff" alt="Bicicleta VikingX Tuff">
-                <h3>Bicicleta VikingX Tuff 25</h3>
-                <p>Ideal para Freeride, com câmbios **Shimano** de 21v.</p>
-                <p class="preco">R$ 1.899,00</p>
-                <button class="add-carrinho" data-nome="Bicicleta VikingX Tuff" data-preco="1899.00">Adicionar ao Carrinho</button>
-            </div>
+        <section id="produtos-container" class="produtos-container">
+            </section>
 
-            <div class="produto" id="bike-gios">
-                <img src="https://placehold.co/300x200/007BFF/white?text=Gios+FRX" alt="Bicicleta Gios FRX">
-                <h3>Bicicleta Gios FRX</h3>
-                <p>Perfeita para manobras (grau), com freios a disco **Shimano**.</p>
-                <p class="preco">R$ 2.799,00</p>
-                <button class="add-carrinho" data-nome="Bicicleta Gios FRX" data-preco="2799.00">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="produto" id="bike-kona">
-                <img src="https://placehold.co/300x200/333333/white?text=Kona+Lava+Dome" alt="Bicicleta Kona Lava Dome">
-                <h3>Bicicleta Kona Lava Dome</h3>
-                <p>Uma Mountain Bike de alta performance para trilhas sérias.</p>
-                <p class="preco">R$ 3.699,00</p>
-                <button class="add-carrinho" data-nome="Bicicleta Kona Lava Dome" data-preco="3699.00">Adicionar ao Carrinho</button>
-            </div>
-        </section>
-
-        <section class="carrinho">
-            <h2>Carrinho</h2>
-            <ul id="lista-carrinho">
-                <li class="empty-cart">Seu carrinho está vazio.</li>
+        <aside id="carrinho" class="carrinho">
+            <h2><img src="https://img.icons8.com/ios-filled/50/000000/shopping-cart.png" alt="carrinho" width="30"/> Carrinho</h2>
+            <ul id="carrinho-itens">
+                <li>Seu carrinho está vazio.</li>
             </ul>
-            <p>Total: <span id="total-carrinho">R$ 0,00</span></p>
-            <button id="finalizar-compra">Finalizar Compra</button>
-        </section>
+            <p class="total">Total: <span id="carrinho-total">R$ 0,00</span></p>
+            <button id="btn-limpar-carrinho">Limpar Carrinho</button>
+        </aside>
     </main>
+
+    <footer>
+        <p>© 2025 BikeShop. Todos os direitos reservados.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
-</html>
+</html>B

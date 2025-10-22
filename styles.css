@@ -1,123 +1,355 @@
-/* Estilos gerais */
+/* Configurações Globais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
 }
 
+/* Header */
 header {
-    background: #2c3e50;
+    background: #333;
     color: #fff;
     padding: 1rem;
     text-align: center;
-}
-
-main {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-}
-
-/* Seção de Produtos */
-.produtos {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.produtos h2 {
-    text-align: center;
-    color: #333;
-    border-bottom: 2px solid #f4f4f4;
-    padding-bottom: 10px;
+/* Layout Principal (Produtos + Carrinho) */
+main {
+    display: flex;
+    flex-wrap: wrap; /* Permite que o carrinho quebre para baixo em telas pequenas */
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
 }
 
-.produto {
+/* Container dos Produtos */
+.produtos-container {
+    flex: 3; /* Ocupa 3/4 do espaço */
+    display: grid;
+    /* Cria um grid responsivo: tenta encaixar colunas de no mínimo 250px */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-right: 20px;
+}
+
+/* Card Individual do Produto */
+.produto-card {
+    background: #fff;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     padding: 15px;
     text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.produto img {
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.produto-card img {
     max-width: 100%;
-    height: 200px; /* Altura fixa */
-    object-fit: cover; /* Garante que a imagem cubra o espaço */
+    height: 180px; /* Altura fixa para alinhar */
+    object-fit: cover; /* Garante que a imagem cubra a área */
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
-.produto .preco {
-    font-size: 1.3rem;
+.produto-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.produto-card .preco {
+    font-size: 1.15rem;
     font-weight: bold;
-    color: #27ae60;
+    color: #2a9d8f; /* Um verde legal */
+    margin-bottom: 15px;
 }
 
-/* Botões */
-.add-carrinho, #finalizar-compra {
-    background: #3498db;
+.btn-adicionar {
+    background: #2a9d8f;
     color: #fff;
-    border: 0;
+    border: none;
     padding: 10px 15px;
-    cursor: pointer;
     border-radius: 5px;
+    cursor: pointer;
     font-size: 1rem;
-    transition: background 0.3s ease;
-    width: 100%;
+    transition: background 0.2s;
 }
 
-.add-carrinho:hover, #finalizar-compra:hover {
-    background: #2980b9;
+.btn-adicionar:hover {
+    background: #264653;
 }
 
-/* Seção do Carrinho */
+/* Barra Lateral do Carrinho */
 .carrinho {
+    flex: 1; /* Ocupa 1/4 do espaço */
+    min-width: 280px; /* Largura mínima */
     background: #fff;
-    padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    align-self: flex-start; /* Faz o carrinho "parar" no topo */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    /* "position: sticky" faz o carrinho "grudar" no topo ao rolar a página */
+    position: sticky;
+    top: 20px;
+    align-self: flex-start; /* Alinha ao topo */
 }
 
-#lista-carrinho li {
+.carrinho h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#carrinho-itens {
     list-style: none;
-    padding: 8px 0;
-    border-bottom: 1px dotted #ccc;
+    margin-bottom: 20px;
+}
+
+#carrinho-itens li {
     display: flex;
     justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.95rem;
 }
 
-#lista-carrinho .empty-cart {
-    text-align: center;
-    color: #888;
-    border: none;
-}
-
-#total-carrinho {
-    font-weight: bold;
+.carrinho .total {
     font-size: 1.2rem;
-    color: #2c3e50;
-}
-
-#finalizar-compra {
-    background: #27ae60;
+    font-weight: bold;
     margin-top: 10px;
 }
 
-#finalizar-compra:hover {
-    background: #229954;
+#carrinho-total {
+    color: #2a9d8f;
 }
 
-/* Responsivo para celulares */
+#btn-limpar-carrinho {
+    background: #e76f51; /* Um tom de vermelho/laranja */
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+#btn-limpar-carrinho:hover {
+    background: #d05d3f;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: #333;
+    color: #aaa;
+    margin-top: 30px;
+}
+
+/* Responsividade para telas pequenas */
 @media (max-width: 768px) {
     main {
-        grid-template-columns: 1fr;
+        flex-direction: column; /* Empilha os produtos e o carrinho */
+    }
+    .produtos-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .carrinho {
+        position: static; /* Remove o "sticky" em telas pequenas */
+        width: 100%;
+    }
+}/* Configurações Globais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+/* Header */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Layout Principal (Produtos + Carrinho) */
+main {
+    display: flex;
+    flex-wrap: wrap; /* Permite que o carrinho quebre para baixo em telas pequenas */
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* Container dos Produtos */
+.produtos-container {
+    flex: 3; /* Ocupa 3/4 do espaço */
+    display: grid;
+    /* Cria um grid responsivo: tenta encaixar colunas de no mínimo 250px */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-right: 20px;
+}
+
+/* Card Individual do Produto */
+.produto-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.produto-card img {
+    max-width: 100%;
+    height: 180px; /* Altura fixa para alinhar */
+    object-fit: cover; /* Garante que a imagem cubra a área */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.produto-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.produto-card .preco {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #2a9d8f; /* Um verde legal */
+    margin-bottom: 15px;
+}
+
+.btn-adicionar {
+    background: #2a9d8f;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.btn-adicionar:hover {
+    background: #264653;
+}
+
+/* Barra Lateral do Carrinho */
+.carrinho {
+    flex: 1; /* Ocupa 1/4 do espaço */
+    min-width: 280px; /* Largura mínima */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    /* "position: sticky" faz o carrinho "grudar" no topo ao rolar a página */
+    position: sticky;
+    top: 20px;
+    align-self: flex-start; /* Alinha ao topo */
+}
+
+.carrinho h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#carrinho-itens {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+#carrinho-itens li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 0.95rem;
+}
+
+.carrinho .total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#carrinho-total {
+    color: #2a9d8f;
+}
+
+#btn-limpar-carrinho {
+    background: #e76f51; /* Um tom de vermelho/laranja */
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+#btn-limpar-carrinho:hover {
+    background: #d05d3f;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: #333;
+    color: #aaa;
+    margin-top: 30px;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column; /* Empilha os produtos e o carrinho */
+    }
+    .produtos-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .carrinho {
+        position: static; /* Remove o "sticky" em telas pequenas */
+        width: 100%;
     }
 }
