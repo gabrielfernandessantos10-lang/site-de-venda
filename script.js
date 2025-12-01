@@ -7,9 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 1,
             nome: 'Bike Mountain Pro',
-            preco: 2499.90,
-            imagem: 'https://via.placeholder.com/250/2a9d8f/FFFFFF?text=Bike+Pro'
-        },
+            preco: 2499.90,ttps://imgcentauro-a.akamaihd.net/1200x1200/M16CLL15A1.jpg'
+        
         {
             id: 2,
             nome: 'Bike Urbana Clássica',
